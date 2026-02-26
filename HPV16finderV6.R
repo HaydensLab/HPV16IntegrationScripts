@@ -2,8 +2,8 @@ library(virusPlot)
 library(data.table)
 library(ggplot2)
 
-#base_dir <- "/mainfs/HNSCgenomics/data_for_Hayden/reordered_exomes_H/IntegrationDir/"
-base_dir <- "C:/Users/hayde/Documents/MASTERS DEGREE DISS"
+base_dir <- #######input path in ""##########
+
 
 file_list <- list.files(path = base_dir,
                         pattern = "^results\\.remapped\\.t1\\.txt$",
@@ -79,7 +79,7 @@ print(Pan_Input_dataframe_directional)
 
 ########virusplot package section##########
 genome <- get_virus_genom(accession_number = "NC_001526.4",
-                          email = "hl8n21@soton.ac.uk")
+                          email = " ") #######provide an email
 print(head(genome))
 
 virus_info_NC_001526.4 <- data.table(gene = c("E1", "E1^E4", "E2", "E5", "L2", "L1", "E6", "E7"),
@@ -112,4 +112,5 @@ write.table(Pan_Input_dataframe, file = "Pan_Sample_Integration_list.txt", sep =
 Pan_Input_dataframe_directional <- Pan_Input_dataframe_directional[order(-Pan_Input_dataframe_directional[, 4]), ]
 write.table(Pan_Input_dataframe_directional, file = "Pan_Sample_Integration_list_directional.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 #run_virusPlot() #just incase to run webserver (WHILST R IS ACTIVE) - to do so remove dev.off from lines above.
+
 q()
